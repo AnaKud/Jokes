@@ -1,7 +1,7 @@
 // SceneDelegate.swift
 // Created by Anastasiya Kudasheva
 
-import UIKit
+import UIKit // sample changes
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
