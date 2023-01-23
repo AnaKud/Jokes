@@ -9,6 +9,7 @@ class ViewController: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		// оч важные изменения
 	}
 
 	override func viewWillAppear(_ animated: Bool) {
