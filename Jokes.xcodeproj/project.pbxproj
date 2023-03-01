@@ -7,16 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E30845BE297E469800A543DB /* UIColor+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30845BD297E469800A543DB /* UIColor+extension.swift */; };
+		E30845C0297E46F200A543DB /* AlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30845BF297E46F200A543DB /* AlertPresenter.swift */; };
+		E30845C3297E47B800A543DB /* AlertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30845C2297E47B800A543DB /* AlertModel.swift */; };
 		E3C695672976CCC50080795F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C695662976CCC50080795F /* AppDelegate.swift */; };
 		E3C695692976CCC50080795F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C695682976CCC50080795F /* SceneDelegate.swift */; };
 		E3C6956B2976CCC50080795F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C6956A2976CCC50080795F /* ViewController.swift */; };
 		E3C6956E2976CCC50080795F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3C6956C2976CCC50080795F /* Main.storyboard */; };
 		E3C695702976CCC60080795F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3C6956F2976CCC60080795F /* Assets.xcassets */; };
 		E3C695732976CCC60080795F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3C695712976CCC60080795F /* LaunchScreen.storyboard */; };
+		E3C695802976E9940080795F /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E3C6957F2976E9200080795F /* Roboto-Medium.ttf */; };
 		E3C695822976F8F20080795F /* JokeMockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C695812976F8F20080795F /* JokeMockModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E30845BD297E469800A543DB /* UIColor+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+extension.swift"; sourceTree = "<group>"; };
+		E30845BF297E46F200A543DB /* AlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresenter.swift; sourceTree = "<group>"; };
+		E30845C2297E47B800A543DB /* AlertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertModel.swift; sourceTree = "<group>"; };
 		E3C695632976CCC50080795F /* Jokes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jokes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3C695662976CCC50080795F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3C695682976CCC50080795F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -25,6 +32,7 @@
 		E3C6956F2976CCC60080795F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E3C695722976CCC60080795F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E3C695742976CCC60080795F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E3C6957F2976E9200080795F /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		E3C695812976F8F20080795F /* JokeMockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeMockModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -39,6 +47,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E30845C1297E47A700A543DB /* AlertPresenter */ = {
+			isa = PBXGroup;
+			children = (
+				E30845BF297E46F200A543DB /* AlertPresenter.swift */,
+				E30845C2297E47B800A543DB /* AlertModel.swift */,
+			);
+			path = AlertPresenter;
+			sourceTree = "<group>";
+		};
 		E3C6955A2976CCC50080795F = {
 			isa = PBXGroup;
 			children = (
@@ -62,6 +79,7 @@
 				E3C695662976CCC50080795F /* AppDelegate.swift */,
 				E3C695682976CCC50080795F /* SceneDelegate.swift */,
 				E3C6956A2976CCC50080795F /* ViewController.swift */,
+				E30845C1297E47A700A543DB /* AlertPresenter */,
 				E3C695812976F8F20080795F /* JokeMockModel.swift */,
 				E3C6956C2976CCC50080795F /* Main.storyboard */,
 				E3C6956F2976CCC60080795F /* Assets.xcassets */,
@@ -74,6 +92,8 @@
 		E3C6957E2976E90A0080795F /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				E3C6957F2976E9200080795F /* Roboto-Medium.ttf */,
+				E30845BD297E469800A543DB /* UIColor+extension.swift */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -136,6 +156,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3C695802976E9940080795F /* Roboto-Medium.ttf in Resources */,
 				E3C695732976CCC60080795F /* LaunchScreen.storyboard in Resources */,
 				E3C695702976CCC60080795F /* Assets.xcassets in Resources */,
 				E3C6956E2976CCC50080795F /* Main.storyboard in Resources */,
@@ -151,8 +172,11 @@
 			files = (
 				E3C6956B2976CCC50080795F /* ViewController.swift in Sources */,
 				E3C695672976CCC50080795F /* AppDelegate.swift in Sources */,
+				E30845BE297E469800A543DB /* UIColor+extension.swift in Sources */,
 				E3C695822976F8F20080795F /* JokeMockModel.swift in Sources */,
+				E30845C3297E47B800A543DB /* AlertModel.swift in Sources */,
 				E3C695692976CCC50080795F /* SceneDelegate.swift in Sources */,
+				E30845C0297E46F200A543DB /* AlertPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,7 +354,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = KD4B6U375X;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Jokes/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
