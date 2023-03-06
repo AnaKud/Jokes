@@ -1,43 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Jokes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fft-4m-9eE" userLabel="JokeView">
-                                <rect key="frame" x="32" y="30" width="536" height="335.66666666666663"/>
+                                <rect key="frame" x="32" y="77" width="326" height="340"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Setup" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ie4-O5-bYy">
-                                        <rect key="frame" x="24" y="24" width="488" height="18.666666666666671"/>
+                                        <rect key="frame" x="24" y="24" width="278" height="23"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1IT-i3-4oy" userLabel="TopLineView">
-                                        <rect key="frame" x="24" y="60.666666666666671" width="488" height="2"/>
+                                        <rect key="frame" x="24" y="65" width="278" height="2"/>
                                         <color key="backgroundColor" systemColor="labelColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="2" id="65s-iY-ke2"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uwx-qY-esV">
-                                        <rect key="frame" x="24" y="62.666666666666686" width="488" height="247"/>
+                                        <rect key="frame" x="24" y="67" width="278" height="247"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Joke" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NNx-U9-xr6">
-                                                <rect key="frame" x="0.0" y="109.33333333333333" width="488" height="28.666666666666671"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                <rect key="frame" x="0.0" y="109.33333333333334" width="278" height="28.333333333333343"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="24"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -53,7 +60,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rZU-dc-qoL" userLabel="BottomLineView">
-                                        <rect key="frame" x="24" y="309.66666666666669" width="488" height="2"/>
+                                        <rect key="frame" x="24" y="314" width="278" height="2"/>
                                         <color key="backgroundColor" systemColor="labelColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="2" id="jcq-AR-Fsv"/>
@@ -77,18 +84,54 @@
                                     <constraint firstItem="Ie4-O5-bYy" firstAttribute="top" secondItem="fft-4m-9eE" secondAttribute="top" constant="24" id="vZF-wg-klL"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GpT-YU-kNR">
+                                <rect key="frame" x="32" y="472" width="64" height="64"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="2eg-Vo-OSX"/>
+                                    <constraint firstAttribute="height" constant="64" id="o2l-ND-waa"/>
+                                </constraints>
+                                <color key="tintColor" name="jBlack"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="arrow.left.arrow.right.circle" catalog="system" title=""/>
+                                <connections>
+                                    <action selector="refreshButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wXq-wx-fgB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VZC-GR-Ti2">
+                                <rect key="frame" x="112" y="472" width="246" height="64"/>
+                                <color key="backgroundColor" name="jLaunchScreenGreen"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="WoO-Gh-GXk"/>
+                                </constraints>
+                                <color key="tintColor" name="jBlack"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Show punchline"/>
+                                <connections>
+                                    <action selector="showPunchButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="siu-qw-bNY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                         <constraints>
+                            <constraint firstItem="VZC-GR-Ti2" firstAttribute="leading" secondItem="GpT-YU-kNR" secondAttribute="trailing" constant="16" id="7HQ-sX-140"/>
+                            <constraint firstItem="VZC-GR-Ti2" firstAttribute="top" secondItem="fft-4m-9eE" secondAttribute="bottom" constant="55" id="G6x-8W-dNB"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="VZC-GR-Ti2" secondAttribute="bottom" constant="274" id="JdF-ru-YaV"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="GpT-YU-kNR" secondAttribute="bottom" constant="274" id="LIR-kZ-UiT"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fft-4m-9eE" secondAttribute="trailing" constant="32" id="Nvk-YJ-OFw"/>
+                            <constraint firstItem="GpT-YU-kNR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="ZT2-Sh-F82"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VZC-GR-Ti2" secondAttribute="trailing" constant="32" id="cp7-2C-rd8"/>
                             <constraint firstItem="fft-4m-9eE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="daP-43-3aJ"/>
                             <constraint firstItem="fft-4m-9eE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="kWb-1B-Y2J"/>
+                            <constraint firstItem="GpT-YU-kNR" firstAttribute="top" secondItem="fft-4m-9eE" secondAttribute="bottom" constant="55" id="qBA-t3-QIf"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="jokeView" destination="fft-4m-9eE" id="395-0Z-fGK"/>
+                        <outlet property="refreshButton" destination="GpT-YU-kNR" id="gUS-EC-Beb"/>
                         <outlet property="setupJokeLabel" destination="NNx-U9-xr6" id="XNF-Dg-nTR"/>
+                        <outlet property="showButton" destination="VZC-GR-Ti2" id="zBM-fS-dvj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -97,6 +140,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.left.arrow.right.circle" catalog="system" width="128" height="123"/>
+        <namedColor name="jBlack">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="jLaunchScreenGreen">
+            <color red="0.6470000147819519" green="0.96100002527236938" blue="0.6470000147819519" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="jPink">
             <color red="0.98000001907348633" green="0.56099998950958252" blue="0.76899999380111694" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
