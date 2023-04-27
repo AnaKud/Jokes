@@ -3,18 +3,6 @@
 
 import UIKit
 
-protocol IAlertPresentable: AnyObject {
-	func present(_ viewControllerToPresent: UIViewController,
-				 animated: Bool,
-				 completion: (() -> Void)?)
-}
-
-extension IAlertPresentable {
-	func present(_ viewControllerToPresent: UIViewController, animated: Bool) {
-		self.present(viewControllerToPresent, animated: animated, completion: nil)
-	}
-}
-
 class ViewController: UIViewController {
 	@IBOutlet weak var jokeIdView: UIView!
 	@IBOutlet weak var idLabel: UILabel!
@@ -28,8 +16,11 @@ class ViewController: UIViewController {
 	@IBOutlet weak var showPunchButton: UIButton!
 	@IBOutlet weak var refreshButton: UIButton!
 
+	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+
 	private var alertPresenter: IAlertPresenter?
 
+	private var joke: JokeModel!
 	// To-Do Удалить после добавления сетевых данных
 	private let jokeModelsMock = JokeModelsMock()
 	private var currentJokeIndex = 0
@@ -40,7 +31,7 @@ class ViewController: UIViewController {
 		self.alertPresenter = AlertPresenter()
 		self.alertPresenter?.didLoad(self)
 
-		self.showJoke(jokeModelsMock[currentJokeIndex])
+		self.setupData()
 	}
 
 	override func viewWillAppear(_ animated: Bool) {
@@ -49,8 +40,7 @@ class ViewController: UIViewController {
 	}
 
 	@IBAction func showPunchButtonTapped(_ sender: Any) {
-		let joke = jokeModelsMock[currentJokeIndex]
-		let alertModel = AlertModel(title: joke.punchline, buttonTitle: "Ok")
+		let alertModel = AlertModel(title: self.joke.punchline, buttonTitle: "Ok")
 		self.alertPresenter?.showAlert(for: alertModel)
 	}
 
@@ -65,6 +55,7 @@ extension ViewController: IAlertPresentable { }
 // MARK: - Additional UI Settings
 private extension ViewController {
 	func setupData() {
+		self.showActivity()
 		if currentJokeIndex + 1 == jokeModelsMock.jokesCount {
 			let alertModel = AlertModel(title: "Not sorry",
 										message: "Sorry, all jokes is end",
@@ -74,19 +65,24 @@ private extension ViewController {
 			}
 			self.alertPresenter?.showAlert(for: alertModel)
 		} else {
+			self.joke = jokeModelsMock[currentJokeIndex]
+			self.showJoke(self.joke)
 			self.currentJokeIndex += 1
-			let joke = jokeModelsMock[currentJokeIndex]
-			self.showJoke(joke)
 		}
+		self.hideActivity()
 	}
-}
 
-// MARK: - Additional UI Settings
-private extension ViewController {
+	func showError(_ error: AppError) {
+		let alertModel = AlertModel(message: error.description, buttonTitle: "OK")
+		self.alertPresenter?.showAlert(for: alertModel)
+	}
+
 	func showJoke(_ joke: JokeModel) {
-		self.idLabel.text = String(joke.id)
-		self.typeLabel.text = joke.type
-		self.setupJokeLabel.text = joke.setup
+		DispatchQueue.main.async {
+			self.idLabel.text = String(joke.id)
+			self.typeLabel.text = joke.type
+			self.setupJokeLabel.text = joke.setup
+		}
 	}
 
 	func roundCornerForAllViews() {
@@ -112,5 +108,18 @@ private extension ViewController {
 		self.refreshButton.layer.borderColor = UIColor.jBlack.cgColor
 		self.refreshButton.layer.borderWidth = borderWidth
 		self.refreshButton.layer.cornerRadius = cornerRadius
+	}
+
+	func showActivity() {
+		DispatchQueue.main.async { [weak self] in
+			self?.activityIndicator.isHidden = false
+			self?.activityIndicator.startAnimating()
+		}
+	}
+
+	func hideActivity() {
+		DispatchQueue.main.async { [weak self] in
+			self?.activityIndicator.stopAnimating()
+		}
 	}
 }

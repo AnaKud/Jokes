@@ -10,6 +10,8 @@
 		E30845BE297E469800A543DB /* UIColor+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30845BD297E469800A543DB /* UIColor+extension.swift */; };
 		E30845C0297E46F200A543DB /* AlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30845BF297E46F200A543DB /* AlertPresenter.swift */; };
 		E30845C3297E47B800A543DB /* AlertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30845C2297E47B800A543DB /* AlertModel.swift */; };
+		E332815129FA6D6E0049F7FE /* IAlertPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E332815029FA6D6E0049F7FE /* IAlertPresentable.swift */; };
+		E332815329FA6D860049F7FE /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E332815229FA6D860049F7FE /* AppError.swift */; };
 		E3C695672976CCC50080795F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C695662976CCC50080795F /* AppDelegate.swift */; };
 		E3C695692976CCC50080795F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C695682976CCC50080795F /* SceneDelegate.swift */; };
 		E3C6956B2976CCC50080795F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C6956A2976CCC50080795F /* ViewController.swift */; };
@@ -24,6 +26,8 @@
 		E30845BD297E469800A543DB /* UIColor+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+extension.swift"; sourceTree = "<group>"; };
 		E30845BF297E46F200A543DB /* AlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresenter.swift; sourceTree = "<group>"; };
 		E30845C2297E47B800A543DB /* AlertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertModel.swift; sourceTree = "<group>"; };
+		E332815029FA6D6E0049F7FE /* IAlertPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAlertPresentable.swift; sourceTree = "<group>"; };
+		E332815229FA6D860049F7FE /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		E3C695632976CCC50080795F /* Jokes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jokes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3C695662976CCC50080795F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3C695682976CCC50080795F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -94,6 +98,8 @@
 			children = (
 				E3C6957F2976E9200080795F /* Roboto-Medium.ttf */,
 				E30845BD297E469800A543DB /* UIColor+extension.swift */,
+				E332815029FA6D6E0049F7FE /* IAlertPresentable.swift */,
+				E332815229FA6D860049F7FE /* AppError.swift */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -170,7 +176,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E332815129FA6D6E0049F7FE /* IAlertPresentable.swift in Sources */,
 				E3C6956B2976CCC50080795F /* ViewController.swift in Sources */,
+				E332815329FA6D860049F7FE /* AppError.swift in Sources */,
 				E3C695672976CCC50080795F /* AppDelegate.swift in Sources */,
 				E30845BE297E469800A543DB /* UIColor+extension.swift in Sources */,
 				E3C695822976F8F20080795F /* JokeMockModel.swift in Sources */,
@@ -354,7 +362,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = KD4B6U375X;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Jokes/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
