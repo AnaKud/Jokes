@@ -21,9 +21,9 @@ class ViewController: UIViewController {
 	private var alertPresenter: IAlertPresenter?
 
 	private var joke: JokeModel!
-	// To-Do Удалить после добавления сетевых данных
-	private let jokeModelsMock = JokeModelsMock()
-	private var currentJokeIndex = 0
+
+	private let networkDataFetcher = NetworkDataFetcher()
+	private let jokesDataParser = JokesDataParser()
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -56,25 +56,37 @@ extension ViewController: IAlertPresentable { }
 private extension ViewController {
 	func setupData() {
 		self.showActivity()
-		if currentJokeIndex + 1 == jokeModelsMock.jokesCount {
-			let alertModel = AlertModel(title: "Not sorry",
-										message: "Sorry, all jokes is end",
-										buttonTitle: "Ok") {
-				self.currentJokeIndex = 0
-				self.showJoke(self.jokeModelsMock[self.currentJokeIndex])
+
+		self.networkDataFetcher.fetchJoke { [weak self] result in
+			guard let self = self else { return }
+			switch result {
+			case .success(let data):
+				let jokeParsingResult = self.jokesDataParser.parseData(data)
+				self.showJokeOrError(jokeParsingResult)
+			case .failure(let error):
+				self.showError(error)
 			}
-			self.alertPresenter?.showAlert(for: alertModel)
-		} else {
-			self.joke = jokeModelsMock[currentJokeIndex]
-			self.showJoke(self.joke)
-			self.currentJokeIndex += 1
+			self.hideActivity()
 		}
-		self.hideActivity()
+	}
+
+	func showJokeOrError(_ result: Result<JokeModel, AppError>) {
+		switch result {
+		case .success(let jokeModel):
+			self.joke = jokeModel
+			self.showJoke(jokeModel)
+		case .failure(let error):
+			self.showError(error)
+		}
 	}
 
 	func showError(_ error: AppError) {
-		let alertModel = AlertModel(message: error.description, buttonTitle: "OK")
-		self.alertPresenter?.showAlert(for: alertModel)
+		DispatchQueue.main.async { [weak self] in
+			let alertModel = AlertModel(message: error.description, buttonTitle: "OK") {
+				self?.setupData()
+			}
+			self?.alertPresenter?.showAlert(for: alertModel)
+		}
 	}
 
 	func showJoke(_ joke: JokeModel) {

@@ -12,6 +12,8 @@
 		E30845C3297E47B800A543DB /* AlertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30845C2297E47B800A543DB /* AlertModel.swift */; };
 		E332815129FA6D6E0049F7FE /* IAlertPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E332815029FA6D6E0049F7FE /* IAlertPresentable.swift */; };
 		E332815329FA6D860049F7FE /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E332815229FA6D860049F7FE /* AppError.swift */; };
+		E3AA661229FB99CA00E4A21B /* JokesDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AA661129FB99CA00E4A21B /* JokesDataParser.swift */; };
+		E3AA661429FB9DBC00E4A21B /* NetworkDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AA661329FB9DBC00E4A21B /* NetworkDataFetcher.swift */; };
 		E3C695672976CCC50080795F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C695662976CCC50080795F /* AppDelegate.swift */; };
 		E3C695692976CCC50080795F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C695682976CCC50080795F /* SceneDelegate.swift */; };
 		E3C6956B2976CCC50080795F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C6956A2976CCC50080795F /* ViewController.swift */; };
@@ -28,6 +30,8 @@
 		E30845C2297E47B800A543DB /* AlertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertModel.swift; sourceTree = "<group>"; };
 		E332815029FA6D6E0049F7FE /* IAlertPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAlertPresentable.swift; sourceTree = "<group>"; };
 		E332815229FA6D860049F7FE /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		E3AA661129FB99CA00E4A21B /* JokesDataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesDataParser.swift; sourceTree = "<group>"; };
+		E3AA661329FB9DBC00E4A21B /* NetworkDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetcher.swift; sourceTree = "<group>"; };
 		E3C695632976CCC50080795F /* Jokes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jokes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3C695662976CCC50080795F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3C695682976CCC50080795F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +64,16 @@
 			path = AlertPresenter;
 			sourceTree = "<group>";
 		};
+		E3AA661029FB99B200E4A21B /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				E3AA661129FB99CA00E4A21B /* JokesDataParser.swift */,
+				E3AA661329FB9DBC00E4A21B /* NetworkDataFetcher.swift */,
+				E3C695812976F8F20080795F /* JokeMockModel.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		E3C6955A2976CCC50080795F = {
 			isa = PBXGroup;
 			children = (
@@ -79,12 +93,12 @@
 		E3C695652976CCC50080795F /* Jokes */ = {
 			isa = PBXGroup;
 			children = (
+				E3AA661029FB99B200E4A21B /* Network */,
 				E3C6957E2976E90A0080795F /* SupportingFiles */,
 				E3C695662976CCC50080795F /* AppDelegate.swift */,
 				E3C695682976CCC50080795F /* SceneDelegate.swift */,
 				E3C6956A2976CCC50080795F /* ViewController.swift */,
 				E30845C1297E47A700A543DB /* AlertPresenter */,
-				E3C695812976F8F20080795F /* JokeMockModel.swift */,
 				E3C6956C2976CCC50080795F /* Main.storyboard */,
 				E3C6956F2976CCC60080795F /* Assets.xcassets */,
 				E3C695712976CCC60080795F /* LaunchScreen.storyboard */,
@@ -179,12 +193,14 @@
 				E332815129FA6D6E0049F7FE /* IAlertPresentable.swift in Sources */,
 				E3C6956B2976CCC50080795F /* ViewController.swift in Sources */,
 				E332815329FA6D860049F7FE /* AppError.swift in Sources */,
+				E3AA661429FB9DBC00E4A21B /* NetworkDataFetcher.swift in Sources */,
 				E3C695672976CCC50080795F /* AppDelegate.swift in Sources */,
 				E30845BE297E469800A543DB /* UIColor+extension.swift in Sources */,
 				E3C695822976F8F20080795F /* JokeMockModel.swift in Sources */,
 				E30845C3297E47B800A543DB /* AlertModel.swift in Sources */,
 				E3C695692976CCC50080795F /* SceneDelegate.swift in Sources */,
 				E30845C0297E46F200A543DB /* AlertPresenter.swift in Sources */,
+				E3AA661229FB99CA00E4A21B /* JokesDataParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
