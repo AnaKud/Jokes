@@ -19,24 +19,24 @@ class ViewController: UIViewController {
 	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
 	private var alertPresenter: IAlertPresenter?
-
 	private var joke: JokeModel!
-	// To-Do Удалить после добавления сетевых данных
-	private let jokeModelsMock = JokeModelsMock()
-	private var currentJokeIndex = 0
+	private var jokesLoader: JokesLoading?
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-
+		self.jokesLoader = JokesLoader()
 		self.alertPresenter = AlertPresenter()
 		self.alertPresenter?.didLoad(self)
-
-		self.setupData()
 	}
 
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		self.roundCornerForAllViews()
+	}
+
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		self.setupData()
 	}
 
 	@IBAction func showPunchButtonTapped(_ sender: Any) {
@@ -56,25 +56,24 @@ extension ViewController: IAlertPresentable { }
 private extension ViewController {
 	func setupData() {
 		self.showActivity()
-		if currentJokeIndex + 1 == jokeModelsMock.jokesCount {
-			let alertModel = AlertModel(title: "Not sorry",
-										message: "Sorry, all jokes is end",
-										buttonTitle: "Ok") {
-				self.currentJokeIndex = 0
-				self.showJoke(self.jokeModelsMock[self.currentJokeIndex])
+		jokesLoader?.load { [weak self] result in
+			guard let self else { return }
+			switch result {
+			case .success(let joke):
+				self.joke = joke
+				self.showJoke(self.joke)
+			case .failure(let error):
+				self.showError(error)
 			}
-			self.alertPresenter?.showAlert(for: alertModel)
-		} else {
-			self.joke = jokeModelsMock[currentJokeIndex]
-			self.showJoke(self.joke)
-			self.currentJokeIndex += 1
+			self.hideActivity()
 		}
-		self.hideActivity()
 	}
 
 	func showError(_ error: AppError) {
-		let alertModel = AlertModel(message: error.description, buttonTitle: "OK")
-		self.alertPresenter?.showAlert(for: alertModel)
+		DispatchQueue.main.async { [weak self] in
+			let alertModel = AlertModel(message: error.description, buttonTitle: "OK")
+			self?.alertPresenter?.showAlert(for: alertModel)
+		}
 	}
 
 	func showJoke(_ joke: JokeModel) {
