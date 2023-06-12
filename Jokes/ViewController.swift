@@ -21,9 +21,6 @@ class ViewController: UIViewController {
 	private var alertPresenter: IAlertPresenter?
 
 	private var joke: JokeModel!
-	// To-Do Удалить после добавления сетевых данных
-	private let jokeModelsMock = JokeModelsMock()
-	private var currentJokeIndex = 0
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -56,25 +53,48 @@ extension ViewController: IAlertPresentable { }
 private extension ViewController {
 	func setupData() {
 		self.showActivity()
-		if currentJokeIndex + 1 == jokeModelsMock.jokesCount {
-			let alertModel = AlertModel(title: "Not sorry",
-										message: "Sorry, all jokes is end",
-										buttonTitle: "Ok") {
-				self.currentJokeIndex = 0
-				self.showJoke(self.jokeModelsMock[self.currentJokeIndex])
-			}
-			self.alertPresenter?.showAlert(for: alertModel)
-		} else {
-			self.joke = jokeModelsMock[currentJokeIndex]
-			self.showJoke(self.joke)
-			self.currentJokeIndex += 1
+		self.refreshButton.isEnabled = false
+		self.showPunchButton.isEnabled = false
+
+		guard let url = URL(string: "https://official-joke-api.appspot.com/jokes/random") else {
+			self.showError(.internetError)
+			return
 		}
-		self.hideActivity()
+
+		URLSession.shared
+			.dataTask(with: URLRequest(url: url)) { [weak self] data, response, error in
+				guard let self,
+					  let data,
+					  error == nil,
+					  let response = response as? HTTPURLResponse,
+					  response.statusCode == 200
+				else {
+					self?.hideActivity()
+					self?.showError(.emptyDataError)
+					return
+				}
+
+				do {
+					let joke = try JSONDecoder().decode(JokeModel.self, from: data)
+					self.hideActivity()
+					self.joke = joke
+					self.showJoke(joke)
+				}
+				catch {
+					self.hideActivity()
+					self.showError(.parsingError)
+				}
+			}
+			.resume()
 	}
 
 	func showError(_ error: AppError) {
-		let alertModel = AlertModel(message: error.description, buttonTitle: "OK")
-		self.alertPresenter?.showAlert(for: alertModel)
+		DispatchQueue.main.async {
+			self.refreshButton.isEnabled = true
+			self.showPunchButton.isEnabled = true
+			let alertModel = AlertModel(message: error.description, buttonTitle: "OK")
+			self.alertPresenter?.showAlert(for: alertModel)
+		}
 	}
 
 	func showJoke(_ joke: JokeModel) {
@@ -82,6 +102,9 @@ private extension ViewController {
 			self.idLabel.text = String(joke.id)
 			self.typeLabel.text = joke.type
 			self.setupJokeLabel.text = joke.setup
+
+			self.refreshButton.isEnabled = true
+			self.showPunchButton.isEnabled = true
 		}
 	}
 
