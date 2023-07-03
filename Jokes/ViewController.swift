@@ -19,17 +19,17 @@ class ViewController: UIViewController {
 	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
 	private var alertPresenter: IAlertPresenter?
+	private var networkDataFetcher: NetworkDataFetcher?
 
 	private var joke: JokeModel!
-	// To-Do Удалить после добавления сетевых данных
-	private let jokeModelsMock = JokeModelsMock()
-	private var currentJokeIndex = 0
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
 		self.alertPresenter = AlertPresenter()
 		self.alertPresenter?.didLoad(self)
+
+		self.networkDataFetcher = NetworkDataFetcher()
 
 		self.setupData()
 	}
@@ -56,20 +56,19 @@ extension ViewController: IAlertPresentable { }
 private extension ViewController {
 	func setupData() {
 		self.showActivity()
-		if currentJokeIndex + 1 == jokeModelsMock.jokesCount {
-			let alertModel = AlertModel(title: "Not sorry",
-										message: "Sorry, all jokes is end",
-										buttonTitle: "Ok") {
-				self.currentJokeIndex = 0
-				self.showJoke(self.jokeModelsMock[self.currentJokeIndex])
+		self.networkDataFetcher?.fetchData { result in
+			DispatchQueue.main.async { [weak self] in
+				guard let self else { return }
+				self.hideActivity()
+				switch result {
+				case .success(let joke):
+					self.joke = joke
+					self.showJoke(self.joke)
+				case .failure(let error):
+					self.showError(error)
+				}
 			}
-			self.alertPresenter?.showAlert(for: alertModel)
-		} else {
-			self.joke = jokeModelsMock[currentJokeIndex]
-			self.showJoke(self.joke)
-			self.currentJokeIndex += 1
 		}
-		self.hideActivity()
 	}
 
 	func showError(_ error: AppError) {
@@ -78,11 +77,9 @@ private extension ViewController {
 	}
 
 	func showJoke(_ joke: JokeModel) {
-		DispatchQueue.main.async {
-			self.idLabel.text = String(joke.id)
-			self.typeLabel.text = joke.type
-			self.setupJokeLabel.text = joke.setup
-		}
+		self.idLabel.text = String(self.joke.id)
+		self.typeLabel.text = self.joke.type
+		self.setupJokeLabel.text = self.joke.setup
 	}
 
 	func roundCornerForAllViews() {
@@ -111,15 +108,11 @@ private extension ViewController {
 	}
 
 	func showActivity() {
-		DispatchQueue.main.async { [weak self] in
-			self?.activityIndicator.isHidden = false
-			self?.activityIndicator.startAnimating()
-		}
+		self.activityIndicator.isHidden = false
+		self.activityIndicator.startAnimating()
 	}
 
 	func hideActivity() {
-		DispatchQueue.main.async { [weak self] in
-			self?.activityIndicator.stopAnimating()
-		}
+		self.activityIndicator.stopAnimating()
 	}
 }

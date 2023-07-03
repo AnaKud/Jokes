@@ -20,6 +20,7 @@
 		E3C695732976CCC60080795F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3C695712976CCC60080795F /* LaunchScreen.storyboard */; };
 		E3C695802976E9940080795F /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E3C6957F2976E9200080795F /* Roboto-Medium.ttf */; };
 		E3C695822976F8F20080795F /* JokeMockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C695812976F8F20080795F /* JokeMockModel.swift */; };
+		E3EFCD932A533A3100C4DECF /* NetworkDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EFCD922A533A3100C4DECF /* NetworkDataFetcher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		E3C695742976CCC60080795F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E3C6957F2976E9200080795F /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		E3C695812976F8F20080795F /* JokeMockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeMockModel.swift; sourceTree = "<group>"; };
+		E3EFCD922A533A3100C4DECF /* NetworkDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetcher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				E3C695662976CCC50080795F /* AppDelegate.swift */,
 				E3C695682976CCC50080795F /* SceneDelegate.swift */,
 				E3C6956A2976CCC50080795F /* ViewController.swift */,
+				E3EFCD922A533A3100C4DECF /* NetworkDataFetcher.swift */,
 				E30845C1297E47A700A543DB /* AlertPresenter */,
 				E3C695812976F8F20080795F /* JokeMockModel.swift */,
 				E3C6956C2976CCC50080795F /* Main.storyboard */,
@@ -180,6 +183,7 @@
 				E3C6956B2976CCC50080795F /* ViewController.swift in Sources */,
 				E332815329FA6D860049F7FE /* AppError.swift in Sources */,
 				E3C695672976CCC50080795F /* AppDelegate.swift in Sources */,
+				E3EFCD932A533A3100C4DECF /* NetworkDataFetcher.swift in Sources */,
 				E30845BE297E469800A543DB /* UIColor+extension.swift in Sources */,
 				E3C695822976F8F20080795F /* JokeMockModel.swift in Sources */,
 				E30845C3297E47B800A543DB /* AlertModel.swift in Sources */,
