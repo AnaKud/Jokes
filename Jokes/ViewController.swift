@@ -3,7 +3,7 @@
 
 import UIKit
 
-class ViewController: UIViewController { // bla bla
+class ViewController: UIViewController {
 	@IBOutlet weak var jokeView: UIView!
 	@IBOutlet weak var setupJokeLabel: UILabel!
 
